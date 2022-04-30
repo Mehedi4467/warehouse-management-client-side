@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import Banner from "./Banner";
+import Items from "./Items";
+import ManageProduct from "./ManageProduct";
 
 const Home = () => {
-    return (
-        <div>
-            <h1>This is hoe page</h1>
-        </div>
-    );
+  return (
+    <div className="container mx-auto">
+      <Banner></Banner>
+      <ManageProduct></ManageProduct>
+      <Items></Items>
+    </div>
+  );
 };
 
 export default Home;
