@@ -4,7 +4,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   return (
-    <div className="w-2/4 mx-auto mt-20 p-10 shadow-lg rounded-lg hover:shadow-2xl">
+    <div className="w-full md:w-2/4 mx-auto my-10 md:my-20 p-10 shadow-lg rounded-lg hover:shadow-2xl">
       <h1 className="text-xl text-blue-400 font-bold text-center mb-10">
         WelCome To Login
       </h1>
