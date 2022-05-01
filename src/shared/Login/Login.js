@@ -18,8 +18,8 @@ const Login = () => {
       <div className="text-center my-4">
         <input
           className="w-full  outline-blue-300 border-2 h-10 rounded-lg px-4"
-          type="email"
-          placeholder="Your Email"
+          type="password"
+          placeholder="Password "
         />
       </div>
 

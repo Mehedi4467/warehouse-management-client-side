@@ -10,13 +10,13 @@ const ManageProduct = () => {
       </div>
 
       <div className="bg-orange-400 text-center p-6 rounded-lg">
-        <i class="text-2xl text-white fa-solid fa-credit-card"></i>
+        <i className="text-2xl text-white fa-solid fa-credit-card"></i>
         <h1 className="text-xl font-bold text-white">Total quantity</h1>
         <p className="text-white text-2xl ">400</p>
       </div>
 
       <div className="bg-green-400 text-center p-6 rounded-lg">
-        <i class="text-2xl text-white fa-solid fa-hand-holding-dollar"></i>
+        <i className="text-2xl text-white fa-solid fa-hand-holding-dollar"></i>
         <h1 className="text-xl font-bold text-white">Total Price</h1>
         <p className="text-white text-2xl ">20000</p>
       </div>
