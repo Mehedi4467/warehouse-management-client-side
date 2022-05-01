@@ -3,7 +3,7 @@ import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
@@ -13,7 +13,7 @@ const Registration = () => {
   const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile] = useUpdateProfile(auth);
-
+  const navigate = useNavigate();
   const handelSignUp = async (event) => {
     event.preventDefault();
     const displayName = event.target.name.value;
@@ -21,6 +21,7 @@ const Registration = () => {
     const password = event.target.password.value;
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName });
+    navigate("/");
   };
 
   return (
@@ -30,7 +31,9 @@ const Registration = () => {
           WelCome To Login
         </h1>
 
-        <p className="text-center text-orange-500 mb-4">{error}</p>
+        <p className="text-center text-orange-500 mb-4">
+          {error && error?.message}
+        </p>
         <form onSubmit={handelSignUp}>
           <div className="text-center mb-4">
             <input
@@ -65,7 +68,7 @@ const Registration = () => {
               type="submit"
               className="bg-blue-400 text-white h-12 w-32 rounded-full cursor-pointer hover:bg-blue-500"
             >
-              {loading ? "Please waite ... " : " Registration"}
+              {loading ? "Please wait ... " : " Registration"}
             </button>
           </div>
         </form>
