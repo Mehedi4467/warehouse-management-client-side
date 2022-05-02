@@ -1,9 +1,13 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   const [hideShow, setHideShow] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
 
   return (
     <div>
@@ -15,13 +19,21 @@ const Header = () => {
             </span>
           </Link>
           <div className="flex md:order-2">
-            <Link
-              to="/login"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Login
-            </Link>
-
+            {user ? (
+              <button
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
+                onClick={() => signOut(auth)}
+              >
+                Log out
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
+              >
+                Login
+              </Link>
+            )}
             <button
               onClick={() => setHideShow(!hideShow)}
               data-collapse-toggle="mobile-menu-4"
@@ -76,7 +88,11 @@ const Header = () => {
                 <CustomLink to="/blogs">Blogs</CustomLink>
               </li>
               <li>
-                <CustomLink to="/login">Login</CustomLink>
+                {user ? (
+                  <button onClick={() => signOut(auth)}>Log out</button>
+                ) : (
+                  <CustomLink to="/login">Login</CustomLink>
+                )}
               </li>
             </ul>
           </div>
