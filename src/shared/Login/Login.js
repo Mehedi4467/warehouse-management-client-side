@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   const handelLogIn = (event) => {

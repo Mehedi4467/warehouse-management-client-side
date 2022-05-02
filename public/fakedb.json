@@ -1,0 +1,47 @@
+[
+  {
+    "_id": "626ffe91d6fa2b019e1ecf09",
+    "name": "Refizator",
+    "price": 3688.2,
+    "img": "https://images.thdstatic.com/productImages/a971824f-c3d1-4770-be8a-148625cddbe9/svn/stainless-look-magic-chef-mini-fridges-hmbr265se1-1f_600.jpg",
+    "supplier": "Avila Randolph",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil",
+    "quantity": 10
+  },
+  {
+    "_id": "626ffe91c9709d9485194bd9",
+    "name": "Refizator",
+    "price": 2308.97,
+    "img": "https://images.thdstatic.com/productImages/a971824f-c3d1-4770-be8a-148625cddbe9/svn/stainless-look-magic-chef-mini-fridges-hmbr265se1-1f_600.jpg",
+    "supplier": "Murray Diaz",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil",
+    "quantity": 10
+  },
+  {
+    "_id": "626ffe9189f4e412a3778cc7",
+    "name": "Refizator",
+    "price": 2751.22,
+    "img": "https://images.thdstatic.com/productImages/a971824f-c3d1-4770-be8a-148625cddbe9/svn/stainless-look-magic-chef-mini-fridges-hmbr265se1-1f_600.jpg",
+    "supplier": "Manning Savage",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil",
+    "quantity": 10
+  },
+  {
+    "_id": "626ffe91629117e7baa01903",
+    "name": "Refizator",
+    "price": 1740.15,
+    "img": "https://images.thdstatic.com/productImages/a971824f-c3d1-4770-be8a-148625cddbe9/svn/stainless-look-magic-chef-mini-fridges-hmbr265se1-1f_600.jpg",
+    "supplier": "Mccray Medina",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil",
+    "quantity": 10
+  },
+  {
+    "_id": "626ffe91ac6403f03b6d26cc",
+    "name": "Refizator",
+    "price": 3255.99,
+    "img": "https://images.thdstatic.com/productImages/a971824f-c3d1-4770-be8a-148625cddbe9/svn/stainless-look-magic-chef-mini-fridges-hmbr265se1-1f_600.jpg",
+    "supplier": "Dionne Sykes",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil",
+    "quantity": 10
+  }
+]
