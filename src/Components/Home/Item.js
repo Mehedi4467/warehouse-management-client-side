@@ -1,7 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Item = ({ item }) => {
-  const { name, price, img, supplier, description, quantity } = item;
+  const { _id, name, price, img, supplier, description, quantity } = item;
+  const navigate = useNavigate();
+  const navigateToService = (id) => {
+    navigate(`/inventory/${id}`);
+  };
   return (
     <div>
       <div className="py-10">
@@ -18,7 +23,10 @@ const Item = ({ item }) => {
               Supplier - {supplier}
             </p>
           </div>
-          <button className="bg-blue-400 hover:bg-blue-500 w-full py-2 text-white font-bold">
+          <button
+            onClick={() => navigateToService(_id)}
+            className="bg-blue-400 hover:bg-blue-500 w-full py-2 text-white font-bold"
+          >
             Update
           </button>
         </div>
