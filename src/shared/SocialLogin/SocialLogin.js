@@ -10,10 +10,12 @@ const SocialLogin = () => {
       </p>
       <button
         onClick={() => signInWithGoogle()}
-        className="bg-blue-400 hover:ng-blue-500 px-10 py-4 text-white rounded-full "
+        className="bg-blue-400 hover:ng-blue-500 px-10 py-4  text-white rounded-full "
       >
-        <i className="text-white font-xl fa-brands fa-google"></i>{" "}
-        {loading ? "Please wait...." : "Sign In With Google"}
+        <div className="flex justify-between items-center">
+          <i className="text-white mr-2 font-xl fa-brands fa-google"></i>
+          {loading ? <p>Please Wait ....</p> : <p>Sign In With Google</p>}
+        </div>
       </button>
     </div>
   );

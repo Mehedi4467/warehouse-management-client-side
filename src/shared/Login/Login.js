@@ -61,7 +61,7 @@ const Login = () => {
             type="submit"
             className="bg-blue-400 text-white h-12 w-32 rounded-full cursor-pointer hover:bg-blue-500"
           >
-            {loading ? "Please wait" : "Login"}
+            {loading ? "Please wait....." : "Login"}
           </button>
         </div>
       </form>

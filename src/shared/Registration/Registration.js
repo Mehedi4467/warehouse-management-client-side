@@ -3,17 +3,20 @@ import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { async } from "@firebase/util";
 
 const Registration = () => {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile] = useUpdateProfile(auth);
-  const navigate = useNavigate();
   const handelSignUp = async (event) => {
     event.preventDefault();
     const displayName = event.target.name.value;
@@ -21,9 +24,10 @@ const Registration = () => {
     const password = event.target.password.value;
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName });
-    navigate("/");
   };
-
+  if (user) {
+    navigate(from, { replace: true });
+  }
   return (
     <div>
       <div className="w-full md:w-2/4 mx-auto my-10 md:my-20 p-10 shadow-lg rounded-lg hover:shadow-2xl">
