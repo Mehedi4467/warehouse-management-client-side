@@ -1,19 +1,29 @@
 import React from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
+  const [user] = useAuthState(auth);
   const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
-
+  const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const handelLogIn = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
     signInWithEmailAndPassword(email, password);
   };
+
+  if (user) {
+    navigate(from, { replace: true });
+  }
   return (
     <div className="w-full md:w-2/4 mx-auto my-10 md:my-20 p-10 shadow-lg rounded-lg hover:shadow-2xl">
       <h1 className="text-xl text-blue-400 font-bold text-center mb-10">
