@@ -2,7 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import Blogs from "./Components/Blogs/Blogs";
 import Home from "./Components/Home/Home";
 import Inventory from "./Components/Inventory/Inventory";
+import ManageInventories from "./Components/ManageInventories/ManageInventories";
 import NotFound from "./Components/NotFound/NotFound";
+import MyItemas from "./MyIteams/MyItemas";
 import Footer from "./shared/Footer/Footer";
 import Header from "./shared/Header/Header";
 import Login from "./shared/Login/Login";
@@ -18,6 +20,22 @@ function App() {
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/reg" element={<Registration></Registration>}></Route>
+        <Route
+          path="/manageInventory"
+          element={
+            <RequireAuth>
+              <ManageInventories></ManageInventories>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/myIteams"
+          element={
+            <RequireAuth>
+              <MyItemas />
+            </RequireAuth>
+          }
+        ></Route>
         <Route
           path="/inventory/:id"
           element={

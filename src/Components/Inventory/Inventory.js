@@ -1,6 +1,6 @@
 import { async } from "@firebase/util";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Inventory = () => {
   const { id } = useParams();
@@ -98,6 +98,12 @@ const Inventory = () => {
           <button className="px-16 rounded-lg py-4 bg-blue-400 text-white hover:bg-blue-500">
             Restock
           </button>
+          <Link
+            to="/manageInventory"
+            className="px-16 rounded-lg py-4 ml-4 bg-blue-400 text-white hover:bg-blue-500"
+          >
+            Manage Items
+          </Link>
         </form>
       </div>
     </div>

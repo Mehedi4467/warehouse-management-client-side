@@ -7,7 +7,7 @@ import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   const [hideShow, setHideShow] = useState(false);
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   return (
     <div>
@@ -84,6 +84,11 @@ const Header = () => {
               <li>
                 <CustomLink to="/about">About</CustomLink>
               </li>
+              {user && (
+                <li>
+                  <CustomLink to="/manageInventory">Manage Items</CustomLink>
+                </li>
+              )}
               <li>
                 <CustomLink to="/blogs">Blogs</CustomLink>
               </li>
