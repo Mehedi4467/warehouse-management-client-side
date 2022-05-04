@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react";
+import useProducts from "../../hooks/useProducts";
 import Item from "./Item";
 
 const Items = () => {
-  const [Items, setItems] = useState([]);
-  useEffect(() => {
-    fetch("fakedb.json")
-      .then((res) => res.json())
-      .then((data) => setItems(data));
-  }, []);
-  console.log(Items);
+  const [Items] = useProducts([]);
+
   return (
     <div>
       <h2 className="text-2xl text-blue-500 text-center my-10">
