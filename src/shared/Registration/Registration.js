@@ -1,14 +1,21 @@
 import React from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSendEmailVerification,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { async } from "@firebase/util";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [sendEmailVerification, sending, mailError] =
+    useSendEmailVerification(auth);
   const [updateProfile] = useUpdateProfile(auth);
 
   const navigate = useNavigate();
@@ -21,6 +28,8 @@ const Registration = () => {
     const password = event.target.password.value;
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName });
+    await sendEmailVerification();
+    toast("Send Email for verification!");
   };
   if (user) {
     navigate(from, { replace: true });
@@ -82,7 +91,7 @@ const Registration = () => {
             </Link>{" "}
           </p>
         </div>
-
+        <ToastContainer />
         <hr className="my-6"></hr>
 
         <SocialLogin></SocialLogin>

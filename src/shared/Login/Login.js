@@ -1,12 +1,21 @@
-import React from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import React, { useState } from "react";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [resetEmail, setresetEmail] = useState("");
+  const [sendPasswordResetEmail, sending, resetError] =
+    useSendPasswordResetEmail(auth);
+
   const navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
@@ -37,6 +46,7 @@ const Login = () => {
             placeholder="Your Email"
             name="email"
             required
+            onChange={(e) => setresetEmail(e.target.value)}
           />
         </div>
         <div className="text-center my-4">
@@ -50,7 +60,15 @@ const Login = () => {
         </div>
 
         <div className="text-right">
-          <button className="text-orange-400">Forgot Password?</button>
+          <button
+            onClick={async () => {
+              await sendPasswordResetEmail(resetEmail);
+              toast("Sent email");
+            }}
+            className="text-orange-400"
+          >
+            Forgot Password?
+          </button>
         </div>
 
         <div className="text-center">
@@ -71,7 +89,7 @@ const Login = () => {
           </Link>
         </p>
       </div>
-
+      <ToastContainer />
       <hr className="my-6"></hr>
 
       <SocialLogin></SocialLogin>
