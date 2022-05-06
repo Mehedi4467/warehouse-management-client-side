@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  useAuthState,
-  useCreateUserWithEmailAndPassword,
-} from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
@@ -10,13 +7,13 @@ import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { async } from "@firebase/util";
 
 const Registration = () => {
-  const [user] = useAuthState(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile] = useUpdateProfile(auth);
+
   const navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  const [createUserWithEmailAndPassword, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
-  const [updateProfile] = useUpdateProfile(auth);
   const handelSignUp = async (event) => {
     event.preventDefault();
     const displayName = event.target.name.value;
