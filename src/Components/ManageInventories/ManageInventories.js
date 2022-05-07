@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useProducts from "../../hooks/useProducts";
 
 const ManageInventories = () => {
@@ -8,6 +9,15 @@ const ManageInventories = () => {
         Manage Your Product
       </h2>
 
+      <div className="container mx-auto">
+        <Link
+          to="/addItem"
+          className="bg-blue-400 hover:bg-blue-500 py-4 px-4 rounded-full text-white"
+        >
+          <i className="text-white text-xl fa-solid fa-circle-plus"></i> Add new
+          item
+        </Link>
+      </div>
       <div className="relative container mx-auto overflow-x-auto shadow-md sm:rounded-lg mt-10">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-[#F4F5F7] dark:bg-gray-700 dark:text-gray-400">

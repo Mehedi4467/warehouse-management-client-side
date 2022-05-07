@@ -89,6 +89,11 @@ const Header = () => {
                   <CustomLink to="/manageInventory">Manage Items</CustomLink>
                 </li>
               )}
+              {user && (
+                <li>
+                  <CustomLink to="/addItem">Add Item</CustomLink>
+                </li>
+              )}
               <li>
                 <CustomLink to="/blogs">Blogs</CustomLink>
               </li>
