@@ -1,6 +1,11 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddItem = () => {
+  const [user] = useAuthState(auth);
   const handelAddItem = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -9,8 +14,24 @@ const AddItem = () => {
     const price = event.target.price.value;
     const quantity = event.target.quantity.value;
     const description = event.target.description.value;
-    console.log(name);
+    const email = user.email;
+    const item = { name, img, supplier, price, quantity, description, email };
+
+    const url = "http://localhost:5000/product";
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          toast("Item Added successfully");
+        }
+      });
+    event.target.reset();
   };
+
   return (
     <div className="my-10 container mx-auto">
       <h2 className="text-blue-400 text-center text-2xl">Add New Item</h2>
@@ -101,6 +122,7 @@ const AddItem = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
