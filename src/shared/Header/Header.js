@@ -91,7 +91,12 @@ const Header = () => {
               )}
               {user && (
                 <li>
-                  <CustomLink to="/addItem">Add Item</CustomLink>
+                  <CustomLink to="/addItem">Add New Item</CustomLink>
+                </li>
+              )}
+              {user && (
+                <li>
+                  <CustomLink to="/myItems">My items</CustomLink>
                 </li>
               )}
               <li>

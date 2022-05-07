@@ -4,8 +4,9 @@ import Blogs from "./Components/Blogs/Blogs";
 import Home from "./Components/Home/Home";
 import Inventory from "./Components/Inventory/Inventory";
 import ManageInventories from "./Components/ManageInventories/ManageInventories";
+import MyItems from "./Components/MyItems/MyItems";
 import NotFound from "./Components/NotFound/NotFound";
-import MyItemas from "./MyIteams/MyItemas";
+
 import Footer from "./shared/Footer/Footer";
 import Header from "./shared/Header/Header";
 import Login from "./shared/Login/Login";
@@ -38,10 +39,10 @@ function App() {
           }
         ></Route>
         <Route
-          path="/myIteams"
+          path="/myItems"
           element={
             <RequireAuth>
-              <MyItemas />
+              <MyItems></MyItems>
             </RequireAuth>
           }
         ></Route>

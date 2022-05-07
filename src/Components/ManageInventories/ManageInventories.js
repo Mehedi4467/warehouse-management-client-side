@@ -2,9 +2,23 @@ import { Link } from "react-router-dom";
 import useProducts from "../../hooks/useProducts";
 
 const ManageInventories = () => {
-  const [Items] = useProducts();
+  const [Items, setItems] = useProducts();
+
+  const handelDeleteItem = (id) => {
+    const url = `http://localhost:5000/product/${id}`;
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          const reaming = Items.filter((items) => items._id !== id);
+          setItems(reaming);
+        }
+      });
+  };
   return (
-    <div>
+    <div className="my-10">
       <h2 className="text-xl text-blue-500 text-center my-10">
         Manage Your Product
       </h2>
@@ -37,11 +51,7 @@ const ManageInventories = () => {
               </th>
 
               <th scope="col" className="px-6 py-3">
-                DETAILS
-              </th>
-
-              <th scope="col" className="px-6 py-3">
-                ACTIONS
+                Delete
               </th>
             </tr>
           </thead>
@@ -64,8 +74,10 @@ const ManageInventories = () => {
                 <td className="px-6 py-4">{product.supplier}</td>
                 <td className="px-6 py-4">
                   <div className="flex justify-between">
-                    <i className=" cursor-pointer fa-solid fa-pen-to-square"></i>
-                    <i className="cursor-pointer fa-solid fa-trash-can"></i>
+                    <i
+                      onClick={() => handelDeleteItem(product._id)}
+                      className="cursor-pointer fa-solid fa-trash-can"
+                    ></i>
                   </div>
                 </td>
               </tr>
