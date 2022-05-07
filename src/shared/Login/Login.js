@@ -14,8 +14,7 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [resetEmail, setresetEmail] = useState("");
-  const [sendPasswordResetEmail, sending, resetError] =
-    useSendPasswordResetEmail(auth);
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
   const navigate = useNavigate();
   let location = useLocation();
@@ -63,8 +62,10 @@ const Login = () => {
         <div className="text-right">
           <button
             onClick={async () => {
-              await sendPasswordResetEmail(resetEmail);
-              toast("Sent email");
+              if (resetEmail !== "") {
+                await sendPasswordResetEmail(resetEmail);
+                toast("Sent email");
+              }
             }}
             className="text-orange-400"
           >

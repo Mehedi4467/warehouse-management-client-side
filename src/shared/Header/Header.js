@@ -81,9 +81,7 @@ const Header = () => {
                   Home
                 </CustomLink>
               </li>
-              <li>
-                <CustomLink to="/about">About</CustomLink>
-              </li>
+
               {user && (
                 <li>
                   <CustomLink to="/manageInventory">Manage Items</CustomLink>
