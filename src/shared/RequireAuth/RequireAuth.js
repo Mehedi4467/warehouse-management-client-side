@@ -9,7 +9,7 @@ function RequireAuth({ children }) {
   let location = useLocation();
 
   if (loading) {
-    return <Spinner></Spinner>;
+    return <Spinner height={"h-96"}></Spinner>;
   }
   if (!user) {
     // Redirect them to the /login page, but save the current location they were

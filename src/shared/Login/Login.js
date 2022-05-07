@@ -8,6 +8,7 @@ import auth from "../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Spinner from "../Spinner/Spinner";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -72,12 +73,24 @@ const Login = () => {
         </div>
 
         <div className="text-center">
-          <button
-            type="submit"
-            className="bg-blue-400 text-white h-12 w-32 rounded-full cursor-pointer hover:bg-blue-500"
-          >
-            {loading ? "Please wait....." : "Login"}
-          </button>
+          {loading ? (
+            <button
+              disabled
+              className="bg-blue-400 hover:bg-blue-500 px-10 cursor-not-allowed py-4 text-white rounded-full "
+            >
+              <div className="flex justify-between items-center">
+                <Spinner height={"h-2"} />
+                <p> Processing...</p>
+              </div>
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="bg-blue-400 text-white h-12 w-32 rounded-full cursor-pointer hover:bg-blue-500"
+            >
+              Login
+            </button>
+          )}
         </div>
       </form>
 

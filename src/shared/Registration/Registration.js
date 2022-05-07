@@ -10,6 +10,7 @@ import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { async } from "@firebase/util";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Spinner from "../Spinner/Spinner";
 
 const Registration = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -28,6 +29,7 @@ const Registration = () => {
     const password = event.target.password.value;
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName });
+
     await sendEmailVerification();
     toast("Send Email for verification!");
   };
@@ -74,12 +76,24 @@ const Registration = () => {
           </div>
 
           <div className="text-center">
-            <button
-              type="submit"
-              className="bg-blue-400 text-white h-12 w-32 rounded-full cursor-pointer hover:bg-blue-500"
-            >
-              {loading ? "Please wait ... " : " Registration"}
-            </button>
+            {loading ? (
+              <button
+                disabled
+                className="bg-blue-400 hover:bg-blue-500 px-10 cursor-not-allowed py-4 text-white rounded-full "
+              >
+                <div className="flex justify-between items-center">
+                  <Spinner height={"h-2"} />
+                  <p> Processing...</p>
+                </div>
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="bg-blue-400 text-white h-12 w-32 rounded-full cursor-pointer hover:bg-blue-500"
+              >
+                Registration
+              </button>
+            )}
           </div>
         </form>
 
