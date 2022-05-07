@@ -13,7 +13,6 @@ import useProducts from "../../hooks/useProducts";
 const ItemNotify = () => {
   const [Items] = useProducts();
   const lowQuantity = Items.find((item) => item.quantity <= 1);
-  console.log(lowQuantity);
   return (
     <div className="my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
