@@ -70,16 +70,26 @@ const Inventory = () => {
             <p className="text-blue-500">ID: {_id}</p>
             <p className="text-lg">Quantity: {quantity}</p>
             <p className="text-lg">Price : {price}&#x09F3;</p>
-            <p className="text-slate-400">supplier: {supplier}</p>
+            <p className="text-slate-600">supplier: {supplier}</p>
             <p className="text-slate-400">{description}</p>
           </div>
           <div className="flex justify-center">
-            <button
-              onClick={handelUpdateQuantity}
-              className="px-16 rounded-lg py-4 bg-blue-400 text-white hover:bg-blue-500"
-            >
-              Delivered
-            </button>
+            {quantity <= 0 ? (
+              <button
+                onClick={handelUpdateQuantity}
+                className="px-16 rounded-lg py-4 cursor-not-allowed bg-blue-400 text-white hover:bg-blue-500"
+                disabled
+              >
+                Sold
+              </button>
+            ) : (
+              <button
+                onClick={handelUpdateQuantity}
+                className="px-16 rounded-lg py-4 bg-blue-400 text-white hover:bg-blue-500"
+              >
+                Delivered
+              </button>
+            )}
           </div>
         </div>
       </div>
