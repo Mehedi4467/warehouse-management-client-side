@@ -1,10 +1,10 @@
 # Electronic Store
 
-Electronic Store Live site [Create React App](https://github.com/facebook/create-react-app).
+Electronic Store Live site [Electronic Store](https://electronic-store-b6fef.web.app/).
 
 
 Electronic Store Live Link.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [https://electronic-store-b6fef.web.app/](https://electronic-store-b6fef.web.app/) to view it in your browser.
 
 
 
