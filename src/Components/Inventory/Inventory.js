@@ -9,7 +9,7 @@ const Inventory = () => {
   const { _id, name, img, price, supplier, description, quantity } = product;
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://gentle-bayou-07991.herokuapp.com/product/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
@@ -20,7 +20,7 @@ const Inventory = () => {
     const quantity = event.target.quntity.value;
     if (quantity !== "") {
       const updateQuantity = { quantity };
-      const url = `http://localhost:5000/product/${id}`;
+      const url = `https://gentle-bayou-07991.herokuapp.com/product/${id}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -42,7 +42,7 @@ const Inventory = () => {
     event.preventDefault();
     const newQuantity = quantity - 1;
     const updateQuantity = { quantity: newQuantity };
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://gentle-bayou-07991.herokuapp.com/product/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

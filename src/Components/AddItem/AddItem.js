@@ -17,7 +17,7 @@ const AddItem = () => {
     const email = user.email;
     const item = { name, img, supplier, price, quantity, description, email };
 
-    const url = "http://localhost:5000/product";
+    const url = "https://gentle-bayou-07991.herokuapp.com/product";
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

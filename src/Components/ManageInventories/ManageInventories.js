@@ -5,7 +5,7 @@ const ManageInventories = () => {
   const [Items, setItems] = useProducts();
 
   const handelDeleteItem = (id) => {
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://gentle-bayou-07991.herokuapp.com/product/${id}`;
     fetch(url, {
       method: "DELETE",
     })
