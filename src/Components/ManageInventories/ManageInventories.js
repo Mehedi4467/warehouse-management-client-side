@@ -20,7 +20,7 @@ const ManageInventories = () => {
   return (
     <div className="my-10">
       <h2 className="text-xl text-blue-500 text-center my-10">
-        Manage Your Product
+        Manage Product
       </h2>
 
       <div className="container mx-auto">
@@ -69,7 +69,11 @@ const ManageInventories = () => {
                 </td>
 
                 <td className="px-6 py-4">&#x09F3; {product.price}</td>
-                <td className="px-6 py-4">{product.quantity}</td>
+                {product.quantity <= 0 ? (
+                  <td className="px-6 py-4">Stock Out</td>
+                ) : (
+                  <td className="px-6 py-4">{product.quantity}</td>
+                )}
 
                 <td className="px-6 py-4">{product.supplier}</td>
                 <td className="px-6 py-4">
