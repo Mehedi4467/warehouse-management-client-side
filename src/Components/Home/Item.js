@@ -11,7 +11,7 @@ const Item = ({ item }) => {
     <div>
       <div className="py-10">
         <div className="h-50 max-w-sm rounded overflow-hidden shadow-lg">
-          <img className="w-[300px] h-[380px]" src={img} alt={name} />
+          <img className="w-[300px] h-[380px] mx-auto" src={img} alt={name} />
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">{name}</div>
             <p className="text-gray-700 text-base">
